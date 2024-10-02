@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Office Employee Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      ul{
+          list-style: none;
+      }
+      .all-btns{
+          width: 15rem;
+      }
+      .OEMS{
+          text-decoration: underline;
+          text-underline-offset: 0.8rem;
+          text-decoration-thickness: 0.15rem;
+      }
+    </style>
+  </head>
+  
+  <body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show my-2"  role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="navv" data-bs-theme='dark'>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">EMPLOYEE HUB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/all-emp">DISPLAY</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-emp">ADD</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/remove-emp">REMOVE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/filter-emp">FILTER</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">ABOUT</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            Manage your Employee Details at Ease          </span>
+        </div>
+      </div>
+    </nav>
+    
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-interval="2000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width:"100%" height="700px" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+
+
+ 
+<!-- As a heading -->
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid" id="about">
+    <span class="navbar-brand mb-0 h1" style="position:relative;left:520px;font-size:40px;">ABOUT</span>
+  </div>
+</nav>
+    <div class="row row-cols-1 row-cols-md-2 g-4" >
+      <div class="col">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Streamlined Workforce Management</h5>
+            <p class="card-text">Our employee management system simplifies the way you handle your workforce. From tracking attendance to managing leaves, everything is now accessible in one place, reducing administrative burden and improving efficiency.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col" >
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1546957221-8692bbd29bd8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Empower Employees</h5>
+            <p class="card-text">Enable employees to take control of their work life with self-service features. They can check schedules, request time off, and view performance reviews, fostering transparency and engagement within the organization.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="width:33%;">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1494887205043-c5f291293cf6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Payroll Management</h5>
+            <p class="card-text">Say goodbye to manual calculations and complex spreadsheets. Our system automates payroll processing, ensuring accurate salary calculations, tax deductions, and timely payments, saving time and reducing errors.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="width:33%;">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Real-time Insights</h5>
+            <p class="card-text">Gain real-time insights into your team’s performance and attendance. With comprehensive reporting tools, you can make data-driven decisions that enhance productivity and drive business growth.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="width:33%;">
+        <div class="card">
+          <img src="https://plus.unsplash.com/premium_photo-1701179596614-9c64f50cda76?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Secure and Scalable</h5>
+            <p class="card-text">Built with security our system ensures your employee data is protected growing with your business needs. Whether you have a small team or a large organization, we’ve got you covered.
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card text-center">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Adress</h5>
+        <p class="card-text">123, Main Road,
+          Rama Rao Nagar,
+          Vijayawada, Andhra Pradesh,
+          PIN: 520010, India</p>
+        <a href="#navv" class="btn btn-primary">Go to home</a>
+      </div>
+      <div class="card-footer text-body-secondary">
+        2 days ago
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>

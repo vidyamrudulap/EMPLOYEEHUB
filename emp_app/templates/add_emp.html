@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OEMS - Add Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      .AAE{
+        text-decoration: underline;
+        text-underline-offset: 0.8rem;
+        text-decoration-thickness: 0.15rem;
+      }
+      .form-cont{
+        width: 50rem;
+        font-weight: 600;
+      }
+      .form-cont input, .form-cont select{
+        border: 0.05rem solid black;
+      }
+    </style>
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show my-2"  role="alert">
+      <strong>{{message}}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark" >
+      <div class="container-md" style="text-align:center;">
+        <a class="navbar-brand" href="#">Add an Employee</a>
+      </div>
+    </nav>
+    <div class="container form-cont my-5">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          {% comment %} <label for="first_name" class="form-label">Employee Firstname:</label> {% endcomment %}
+          <input type="text" name="first_name" class="form-control" placeholder="First Name" id="first_name" required>
+        </div>
+        <div class="mb-3">
+          {% comment %} <label for="last_name" class="form-label">Employee Lastname:</label> {% endcomment %}
+          <input type="text" name="last_name" placeholder="Last Name" class="form-control" id="last_name" required>
+        </div>
+        
+        <select class="form-select form-select mb-3" name="department" aria-label=".form-select-lg example" required>
+          <option selected hidden value="department">Select Department</option>
+          {% for i in dept %}
+          <option value="{{i.id}}">{{i.name}} - {{i.location}}</option>
+          {% endfor %}
+        </select>
+        <select class="form-select form-select mb-3" name="role" aria-label=".form-select-lg example" required>
+          <option selected hidden value="role">Select Role</option>
+          {% for j in role %}
+          <option value="{{j.id}}">{{j.name}}</option>
+          {% endfor %}
+        </select>
+        <div class="mb-3">
+          {% comment %} <label for="salary" class="form-label">Employee Salary:</label> {% endcomment %}
+          <input type="number" name="salary" placeholder="Salary" class="form-control" id="salary" required>
+        </div>
+        <div class="mb-3">
+          {% comment %} <label for="bonus" class="form-label">Employee Bonus:</label> {% endcomment %}
+          <input type="number" name="bonus" placeholder="Bonus" class="form-control" id="bonus" required>
+        </div>
+        <div class="mb-3">
+          {% comment %} <label for="phone_number" class="form-label">Employee Phone Number:</label> {% endcomment %}
+          <input type="number" name="phone_number" placeholder="Contact Number" class="form-control" id="phone_number" required>
+        </div>
+        <div class="mb-3">
+          {% comment %} <label for="hire_date" class="form-label">Employee Hire Date:</label> {% endcomment %}
+          <input type="date" name="hire_date" placeholder="Date of Joining" class="form-control" id="hire_date" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary float-end my-2" style="background-color:#2b3035;position:relative;left:-48%;padding:5px;width:10%;border-radius:15px;">Add </button>
+      </form>
+      
+    </div>
+
+    
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
