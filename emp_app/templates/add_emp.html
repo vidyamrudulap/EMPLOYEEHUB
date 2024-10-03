@@ -39,11 +39,9 @@
       <form action="" method="post">
         {% csrf_token %}
         <div class="mb-3">
-          {% comment %} <label for="first_name" class="form-label">Employee Firstname:</label> {% endcomment %}
           <input type="text" name="first_name" class="form-control" placeholder="First Name" id="first_name" required>
         </div>
         <div class="mb-3">
-          {% comment %} <label for="last_name" class="form-label">Employee Lastname:</label> {% endcomment %}
           <input type="text" name="last_name" placeholder="Last Name" class="form-control" id="last_name" required>
         </div>
         
@@ -60,19 +58,15 @@
           {% endfor %}
         </select>
         <div class="mb-3">
-          {% comment %} <label for="salary" class="form-label">Employee Salary:</label> {% endcomment %}
           <input type="number" name="salary" placeholder="Salary" class="form-control" id="salary" required>
         </div>
         <div class="mb-3">
-          {% comment %} <label for="bonus" class="form-label">Employee Bonus:</label> {% endcomment %}
           <input type="number" name="bonus" placeholder="Bonus" class="form-control" id="bonus" required>
         </div>
         <div class="mb-3">
-          {% comment %} <label for="phone_number" class="form-label">Employee Phone Number:</label> {% endcomment %}
           <input type="number" name="phone_number" placeholder="Contact Number" class="form-control" id="phone_number" required>
         </div>
         <div class="mb-3">
-          {% comment %} <label for="hire_date" class="form-label">Employee Hire Date:</label> {% endcomment %}
           <input type="date" name="hire_date" placeholder="Date of Joining" class="form-control" id="hire_date" required>
         </div>
 

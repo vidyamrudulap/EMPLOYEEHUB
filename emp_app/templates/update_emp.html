@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Employee</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .form-cont{
+        width: 50rem;
+        font-weight: 600;
+      }
+      .form-cont input, .form-cont select{
+        border: 0.05rem solid black;
+      }
+      input,select 
+      {
+        border-radius:2%;
+        width:40%;
+      }
+      label {
+        position:relative; 
+        left:14%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark" >
+      <div class="container-md" style="text-align:center;">
+        <a class="navbar-brand" href="#">Remove an Employee</a>
+      </div>
+      <div class="container-md" style="position:relative;left:60px;">
+        <a class="navbar-brand" href="/">HOME</a>
+      </div>
+      <div class="container-md" style="margin-right:-220px;">
+        <a class="navbar-brand" href="/all-emp">View Employees</a>
+      </div>
+    </nav>
+    <div class="container form-cont my-5">
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" value="{{ emp.first_name }}" style="position:absolute;left:40%;"><br>
+  </div>
+
+    <div class="mb-3">
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" value="{{ emp.last_name }}" style="position:absolute;left:40%;"><br>
+  </div>
+  <div class="mb-3">
+
+    <label for="department">Department:</label>
+    <select name="department" style="position:absolute;left:40%;">
+        {% for dept in depts %}
+        <option value="{{ dept.id }}" {% if emp.dept.id == dept.id %}selected{% endif %}>{{ dept.name }}</option>
+        {% endfor %}
+    </select><br>
+  </div>
+
+    <div class="mb-3">
+
+    <label for="role">Role:</label>
+    <select name="role" style="position:absolute;left:40%;">
+        {% for role in roles %}
+        <option value="{{ role.id }}" {% if emp.role.id == role.id %}selected{% endif %}>{{ role.name }}</option>
+        {% endfor %}
+    </select><br>
+  </div>
+
+    <div class="mb-3">
+
+    <label for="salary">Salary:</label>
+    <input type="text" name="salary" value="{{ emp.salary }}" style="position:absolute;left:40%;"><br>
+  </div>
+
+    <div class="mb-3">
+
+    <label for="bonus">Bonus:</label>
+    <input type="text" name="bonus" value="{{ emp.bonus }}" style="position:absolute;left:40%;"><br>
+  </div>
+
+    <div class="mb-3">
+
+    <label for="phone_number">Phone Number:</label>
+    <input type="text" name="phone_number" value="{{ emp.phone_num }}" style="position:absolute;left:40%;"><br>
+  </div>
+
+    <div class="mb-3">
+
+    <label for="hire_date">Hire Date:</label>
+    <input type="date" name="hire_date" value="{{ emp.hire_date }}" style="position:absolute;left:40%;"><br>
+  </div>
+
+    <button type="submit" class="btn btn-primary float-end my-2" style="background-color:#2b3035;position:relative;left:-40%;padding:5px;width:20%;border-radius:15px;">Update </button>
+</form>
+</div>
+  </body>
+</html>

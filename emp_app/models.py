@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.shortcuts import render
 # Create your models here.
 
 class Role(models.Model):
@@ -14,6 +14,7 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Employee(models.Model):
     emp_id = models.AutoField(primary_key=True)

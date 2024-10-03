@@ -16,6 +16,7 @@ def allEmp(request):
     }
     return render(request, 'all_emp.html', context)
 
+
 def addEmp(request):
     if request.method == 'POST':
         firstname = request.POST.get('first_name')
@@ -91,3 +92,60 @@ def filterEmp(request):
     }
     return render(request, 'filter_emp.html', context)
 
+
+
+def listEmployees(request):
+    # Fetch all employees
+    emps = Employee.objects.all()
+    context = {
+        'emps': emps
+    }
+    return render(request, 'list_employees.html', context)
+
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import Employee, Department, Role
+
+def updateEmp(request, emp_id):
+    # Get the employee object or return 404 if not found
+    emp = get_object_or_404(Employee, emp_id=emp_id)
+    
+    if request.method == 'POST':
+        # Fetch form data
+        firstname = request.POST.get('first_name')
+        lastname = request.POST.get('last_name')
+        emp_dept = request.POST.get('department')
+        emp_role = request.POST.get('role')
+        salary = request.POST.get('salary')
+        bonus = request.POST.get('bonus')
+        phone = request.POST.get('phone_number')
+        hire_date = request.POST.get('hire_date')
+        
+        # Get department and role objects
+        dept = get_object_or_404(Department, id=emp_dept)
+        role = get_object_or_404(Role, id=emp_role)
+        
+        # Update the employee details
+        emp.first_name = firstname
+        emp.last_name = lastname
+        emp.dept = dept
+        emp.role = role
+        emp.salary = salary
+        emp.bonus = bonus
+        emp.phone_num = phone
+        emp.hire_date = hire_date
+        emp.save()
+
+        messages.success(request, "Successfully updated the employee details")
+        return redirect('list_employees')  # Go back to employee list after updating
+
+    # Fetch all departments and roles to populate the form
+    all_depts = Department.objects.all()
+    all_roles = Role.objects.all()
+
+    context = {
+        'emp': emp,
+        'depts': all_depts,
+        'roles': all_roles
+    }
+    return render(request, 'update_emp.html', context)
